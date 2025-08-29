@@ -1,7 +1,7 @@
 # Wordish Game 🎮
 
 Wordish is a **Wordle-like web-based game** built as part of a three-part homework series.  
-This final version (HW3) transitions the game from a purely front-end implementation into a **full Django web application**, with server-side game logic and client-server interactions.
+This final version transitions the game from a purely front-end implementation into a **full Django web application**, with server-side game logic and client-server interactions.
 
 ---
 
