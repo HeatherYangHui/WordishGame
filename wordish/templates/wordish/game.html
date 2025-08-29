@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordish - Game</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'wordish/wordish.css' %}">
+</head>
+<body>
+    <div id="status">{{ message }}</div>
+    
+    <div id="matrix">
+        {% for row in matrix %}
+            <div class="row">
+                {% for cell in row %}
+                    <div class="cell {{ cell.color }}" id="{{ cell.id }}">{{ cell.letter }}</div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <form action="{% url 'game_action' %}" method="POST">
+        {% csrf_token %}
+        <label for="guess_text">Guess:</label>
+        <input type="text" id="guess_text" name="new-guess" >
+        <button id="guess_button" type="submit">Submit</button>
+
+        <input type="hidden" name="target" value="{{ target }}">
+        <input type="hidden" name="old-guesses" value="{{ old_guesses }}">
+    </form>
+
+    <div>
+        <form action="{% url 'start_action' %}" method="GET">
+            <button id="start_button" type="submit">Restart</button>
+        </form>
+    </div>
+</body>
+</html>

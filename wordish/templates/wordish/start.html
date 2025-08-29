@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordish - Start</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'wordish/wordish.css' %}">
+</head>
+<body>
+    <div id="message">
+        {% if message %}
+            <strong>{{ message }}</strong>
+        {% else %}
+            &nbsp;
+        {% endif %}
+    </div>
+
+    <form action="{% url 'start_action' %}" method="POST">
+        {% csrf_token %}
+        <label for="target_text"><strong>New Target:</strong> </label>
+        <input id="target_text" type="text" name="target" maxlength="5" required>
+        <button id="start_button" type="submit">Start</button>
+    </form>
+</body>
+</html>
